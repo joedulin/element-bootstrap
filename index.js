@@ -3,6 +3,7 @@ var Element = element.Element;
 var e = element.e;
 var getTemplate = require('elementfw').getTemplate;
 var Template = require('elementfw').Template;
+var clone = require('clone');
 
 function defaults (a, b) {
 	if (typeof a === 'undefined') {
@@ -15,7 +16,27 @@ function initTemplate (t) {
 	t.vars = defaults(t.vars, {});
 	t.e = defaults(t.e, {});
 }
-function isset(v) { return (typeof v !== 'undefined'); }
+function isset(v) { 
+	return (typeof v !== 'undefined'); 
+}
+function load(v, fullpath) {
+	if (!isset.v) { 
+		v = getTemplate(fullpath);
+		initTemplate(v);
+	}
+	var opts = clone(v);
+	var t = new Template();
+	t.body = opts.body;
+	t.vars = opts.vars;
+	t.e = opts.e;
+	return t;
+}
+function setOpts(obj, t) {
+	var opts = clone(obj);
+	t.body = opts.body;
+	t.vars = opts.vars;
+	t.e = opts.e;
+}
 
 //Modify Element to make it more Bootstrap friendly
 
@@ -56,21 +77,15 @@ var w = {};
 
 //Define the widgets
 var widgets = {
-	r: function () {
-		if (!isset(w.r)) {
-			w.r = getTemplate(__dirname + '/templates/row.js');
-			initTemplate(w.r);
-		}
-		var t = new Template();
-		var opts = clone(w.r);
-		t.body = opts.body;
-		t.vars = opts.vars;
-		t.e = opts.e;
-		return t;
+	row: function () {
+		return load(w.row, __dirname + '/templates/row.js');
+	},
+	col: function () { 
+		return clone(getTemplate(__dirname + '/templates/col.js')); 
+	},
+	lead: function () { 
+		return load(w.lead, __dirname + '/templates/lead.js'); 
 	}
-	row: function () { return getTemplate(__dirname + '/templates/row.js') },
-	col: function () { return getTemplate(__dirname + '/templates/col.js') },
-	lead: function () { return getTemplate(__dirname + '/templates/lead.js') }
 }
 
 exports.Element = Element;
