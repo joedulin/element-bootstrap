@@ -11,7 +11,8 @@
   ],
   "dependencies": {
     "elementfw": "git://github.com/joedulin/elementfw",
-    "element.js": "git://github.com/joedulin/element.js"
+    "element.js": "git://github.com/joedulin/element.js",
+    "clone": "*"
   },
   "keywords": [
     "framework",
