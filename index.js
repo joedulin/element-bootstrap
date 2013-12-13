@@ -4,6 +4,19 @@ var e = element.e;
 var getTemplate = require('elementfw').getTemplate;
 var Template = require('elementfw').Template;
 
+function defaults (a, b) {
+	if (typeof a === 'undefined') {
+		return b;
+	}
+	return a;
+}
+function initTemplate (t) {
+	t.body = defaults(t.body, {});
+	t.vars = defaults(t.vars, {});
+	t.e = defaults(t.e, {});
+}
+function isset(v) { return (typeof v !== 'undefined'); }
+
 //Modify Element to make it more Bootstrap friendly
 
 //Any element can be hidden at different sizes
@@ -43,6 +56,18 @@ var w = {};
 
 //Define the widgets
 var widgets = {
+	r: function () {
+		if (!isset(w.r)) {
+			w.r = getTemplate(__dirname + '/templates/row.js');
+			initTemplate(w.r);
+		}
+		var t = new Template();
+		var opts = clone(w.r);
+		t.body = opts.body;
+		t.vars = opts.vars;
+		t.e = opts.e;
+		return t;
+	}
 	row: function () { return getTemplate(__dirname + '/templates/row.js') },
 	col: function () { return getTemplate(__dirname + '/templates/col.js') },
 	lead: function () { return getTemplate(__dirname + '/templates/lead.js') }
