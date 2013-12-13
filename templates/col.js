@@ -24,31 +24,70 @@ Template.prototype.setSize = function (size, num) {
 				]);
 				break;
 			case 'phone':
+				var remClasses = [];
+				for (var i=0; i<this.body.classes.length; i++) {
+					if (this.body.classes[i].search(/^col-[x,s][s,m]-[0-9]/) > -1) {
+						remClasses.push(this.body.classes[i]);
+					}
+				}
+				this.body.removeClass(remClasses);
 				this.body.addClass([
 					'col-xs-' + num,
 					'col-sm-' + num
 				]);
 				break;
 			case 'desktop':
+				var remClasses = [];
+				for (var i=0; i<this.body.classes.length; i++) {
+					if (this.body.classes[i].search(/^col-[m,l][d,g]-[0-9]/) > -1) {
+						remClasses.push(this.body.classes[i]);
+					}
+				}
+				this.body.removeClass(remClasses);
 				this.body.addClass([
 					'col-md-' + num,
 					'col-lg-' + num
 				]);
 				break;
 			case 'xs':
+				var remClasses = [];
+				for (var i=0; i<this.body.classes.length; i++) {
+					if (this.body.classes[i].search(/^col-xs-[0-9]/) > -1) {
+						remClasses.push(this.body.classes[i]);
+					}
+				}
+				this.body.removeClass(remClasses);
 				this.body.addClass('col-xs-' + num);
 				break;
 			case 'sm':
+				var remClasses = [];
+				for (var i=0; i<this.body.classes.length; i++) {
+					if (this.body.classes[i].search(/^col-sm-[0-9]/) > -1) {
+						remClasses.push(this.body.classes[i]);
+					}
+				}
+				this.body.removeClass(remClasses);
 				this.body.addClass('col-sm-' + num);
 				break;
 			case 'md':
+				var remClasses = [];
+				for (var i=0; i<this.body.classes.length; i++) {
+					if (this.body.classes[i].search(/^col-md-[0-9]/) > -1) {
+						remClasses.push(this.body.classes[i]);
+					}
+				}
+				this.body.removeClass(remClasses);
 				this.body.addClass('col-md-' + num);
 				break;
 			case 'lg':
+				var remClasses = [];
+				for (var i=0; i<this.body.classes.length; i++) {
+					if (this.body.classes[i].search(/^col-md-[0-9]/) > -1) {
+						remClasses.push(this.body.classes[i]);
+					}
+				}
+				this.body.removeClass(remClasses);
 				this.body.addClass('col-lg-' + num);
-				break;
-			default:
-				this.body.addClass('col-md-' + num);
 				break;
 		}
 	}
@@ -62,6 +101,13 @@ Template.prototype.setOffset = function (size, num) {
 	} else {
 		switch (size) {
 			case 'all':
+				var remClasses = [];
+				for (var i=0; i<this.body.classes.length; i++) {
+					if (this.body.classes[i].search(/^col-..-offset-[0-9]/) > -1) {
+						remClasses.push(this.body.classes[i]);
+					}
+				}
+				this.body.removeClass(remClasses);
 				this.body.addClass([
 					'col-xs-offset-' + num,
 					'col-sm-offset-' + num,
