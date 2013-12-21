@@ -1,5 +1,5 @@
 {
-  "name": "elementfw-bootstrap",
+  "name": "element-bootstrap",
   "description": "Extension for elementfw to add Twitter Bootstrap widgets",
   "version": "0.0.1",
   "author": "Joe Dulin <joe+github@dulinbanjos.com>",
@@ -12,7 +12,8 @@
   "dependencies": {
     "elementfw": "git://github.com/joedulin/elementfw",
     "element.js": "git://github.com/joedulin/element.js",
-    "clone": "*"
+    "clone": "*",
+    "node-uuid": "*"
   },
   "keywords": [
     "framework",

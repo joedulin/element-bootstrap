@@ -16,11 +16,11 @@ function initTemplate (t) {
 	t.vars = defaults(t.vars, {});
 	t.e = defaults(t.e, {});
 }
-function isset(v) { 
-	return (typeof v !== 'undefined'); 
+function isset(v) {
+	return (typeof v !== 'undefined');
 }
 function load(v, fullpath) {
-	if (!isset.v) { 
+	if (!isset.v) {
 		v = getTemplate(fullpath);
 		initTemplate(v);
 	}
@@ -41,36 +41,106 @@ function setOpts(obj, t) {
 //Modify Element to make it more Bootstrap friendly
 
 //Any element can be hidden at different sizes
-Element.prototype.setHidden = function (size, bool) {
+Template.prototype.setHidden = function (size, bool) {
 	switch (size) {
 		case 'xs':
-			(bool) ? this.addClass('hidden-xs') : this.removeClass('hidden-xs');
+			(bool) ? this.body.addClass('hidden-xs') : this.body.removeClass('hidden-xs');
 			break;
 		case 'sm':
-			(bool) ? this.addClass('hidden-sm') : this.removeClass('hidden-sm');
+			(bool) ? this.body.addClass('hidden-sm') : this.body.removeClass('hidden-sm');
 			break;
 		case 'md':
-			(bool) ? this.addClass('hidden-md') : this.removeClass('hidden-md');
+			(bool) ? this.body.addClass('hidden-md') : this.body.removeClass('hidden-md');
 			break;
 		case 'lg':
-			(bool) ? this.addClass('hidden-lg') : this.removeClass('hidden-lg');
+			(bool) ? this.body.addClass('hidden-lg') : this.body.removeClass('hidden-lg');
 			break;
 	}
 };
 
 //Align text
-Element.prototype.align = function (direction) {
+Template.prototype.align = function (direction) {
+	this.body.removeClass(['text-left','text-right','text-center']);
 	switch (direction) {
 		case 'left':
-			this.addClass('text-left');
+			this.body.addClass('text-left');
 			break;
 		case 'center':
-			this.addClass('text-center');
+			this.body.addClass('text-center');
 			break;
 		case 'right':
-			this.addClass('text-right');
+			this.body.addClass('text-right');
 			break;
 	}
+};
+
+Template.prototype.float = function (direction) {
+	this.body.removeClass(['pull-left','pull-right']);
+	this.body.addClass(['pull-', direction].join(''));
+};
+
+Template.prototype.setCenter = function (bool) {
+	if (bool) {
+		this.body.addClass('center-block');
+	} else {
+		this.body.removeClass('center-block');
+	}
+};
+
+Template.prototype.sronly = function (bool) {
+	if (bool) {
+		this.body.addClass('sr-only');
+	} else {
+		this.body.removeClass('sr-only');
+	}
+};
+
+Template.prototype.hiddenPrint = function (bool) {
+	if (bool) {
+		this.body.addClass('hidden-print');
+	} else {
+		this.body.removeClass('hidden-print');
+	}
+};
+
+Template.prototype.prepend = function (element) {
+	return this.body.prepend(element);
+};
+
+Template.prototype.append = function (element) {
+	return this.body.append(element);
+};
+
+Template.prototype.addClass = function(c) {
+	return this.body.addClass(c);
+};
+
+Template.prototype.attr = function(attr,value) {
+	return this.body.attr(attr,value);
+};
+
+Template.prototype.css = function(style,value) {
+	return this.body.css(style,value);
+};
+
+Template.prototype.find = function(query) {
+	return this.body.find(query);
+};
+
+Template.prototype.hasClass = function(c) {
+	return this.body.hasClass(c);
+};
+
+Template.prototype.removeAttr = function(attr) {
+	return this.body.removeAttr(attr);
+};
+
+Template.prototype.removeClass = function(c) {
+	return this.body.removeClass(c);
+};
+
+Template.prototype.wrap = function(wrapper) {
+	return this.body.wrap(wrapper);
 };
 
 var w = {};
@@ -80,14 +150,51 @@ var widgets = {
 	row: function () {
 		return load(w.row, __dirname + '/templates/row.js');
 	},
-	col: function () { 
-		return clone(getTemplate(__dirname + '/templates/col.js')); 
+	col: function () {
+		return clone(getTemplate(__dirname + '/templates/col.js'));
 	},
-	lead: function () { 
-		return load(w.lead, __dirname + '/templates/lead.js'); 
+	lead: function () {
+		return load(w.lead, __dirname + '/templates/lead.js');
+	},
+	table: function () {
+		return load(w.table, __dirname + '/templates/table.js');
+	},
+	form: function () {
+		return load(w.form, __dirname + '/templates/form.js');
+	},
+	button: function () {
+		return load(w.button, __dirname + '/templates/button.js');
+	},
+	image: function () {
+		return load(w.button, __dirname + '/templates/image.js');
+	},
+	closeIcon: function () {
+		return load(w.closeIcon, __dirname + '/templates/closeIcon.js');
+	},
+	caret: function () {
+		return load(w.caret, __dirname + '/templates/caret.js');
+	},
+	clearfix: function () {
+		return load(w.clearfix, __dirname + '/templates/clearfix.js');
+	},
+	icon: function () {
+		return load(w.icon, __dirname + '/templates/icon.js');
+	},
+	dropdown: function () {
+		return load(w.dropdown, __dirname + '/templates/dropdown.js');
 	}
-}
+};
+
+var icon = function (name) {
+	var icon = new Template();
+	icon.body = e.span();
+	icon.addClass('glyphicon');
+	icon.addClass(['glyphicon-', name].join(''));
+	return icon;
+};
 
 exports.Element = Element;
 exports.e = e;
+exports.Template = Template;
+exports.icon = icon;
 exports.widgets = widgets;

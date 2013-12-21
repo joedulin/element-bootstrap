@@ -1,7 +1,6 @@
 var Element = require('element.js').Element;
+var Template = require('../index.js').Template;
 
-var body = new Element('div',{classes: ['row']});
-
-exports.Template = {
-	body: body
-}
+var row = new Template();
+row.body = new Element('div',{classes: ['row']});
+exports.Template = row;

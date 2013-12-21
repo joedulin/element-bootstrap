@@ -1,4 +1,4 @@
-var Template = require('elementfw').Template;
+var Template = require('../index.js').Template;
 var e = require('element.js').e;
 
 Template.prototype.setSize = function (size, num) {
