@@ -35,6 +35,14 @@ Template.prototype.setDisabled = function (bool) {
 	}
 };
 
+Template.prototype.setNavbar = function (bool) {
+	if (bool) {
+		this.body.addClass('navbar-btn');
+	} else {
+		this.body.removeClass('navbar-btn');
+	}
+};
+
 var button = new Template();
 button.body = e.button();
 button.body.addClass(['btn','btn-default']);

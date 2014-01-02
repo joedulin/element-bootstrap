@@ -1,6 +1,6 @@
 var Template = require('../index.js').Template;
-var caret = require('../index.js').widgets.caret;
 var e = require('element.js').e;
+var caret = require('../index.js').widgets.caret;
 var uuid = require('node-uuid');
 
 function disable(el, bool) {

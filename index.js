@@ -182,7 +182,73 @@ var widgets = {
 	},
 	dropdown: function () {
 		return load(w.dropdown, __dirname + '/templates/dropdown.js');
-	}
+	},
+	btnGroup: function () {
+		return load(w.btnGroup, __dirname + '/templates/btnGroup.js');
+	},
+	btnToolbar: function () {
+		return load(w.btnToolbar, __dirname + '/templates/btnToolbar.js');
+	},
+	inputGroup: function () {
+		return load(w.inputGroup, __dirname + '/templates/inputGroup.js');
+	},
+	nav: function () {
+		return load(w.nav, __dirname + '/templates/nav.js');
+	},
+	navbar: function () {
+		return load(w.navbar, __dirname + '/templates/navbar.js');
+	},
+	breadcrumb: function () {
+		return load(w.breadcrumb, __dirname + '/templates/breadcrumb.js');
+	},
+	pagination: function () {
+		return load(w.pagination, __dirname + '/templates/pagination.js');
+	},
+	pager: function () {
+		return load(w.pager, __dirname + '/templates/pager.js');
+	},
+	label: function () {
+		return load(w.label, __dirname + '/templates/label.js');
+	},
+	badge: function () {
+		return load(w.badge, __dirname + '/templates/badge.js');
+	},
+	pageheader: function () {
+		return load(w.pageheader, __dirname + '/templates/pageheader.js');
+	},
+	thumbnail: function () {
+		return load(w.thumbnail, __dirname + '/templates/thumbnail.js');
+	},
+	alert: function () {
+		return load(w.alert, __dirname + '/templates/alert.js');
+	},
+	progressbar: function () {
+		return load(w.progressbar, __dirname + '/templates/progressbar.js');
+	},
+	media: function () {
+		return load(w.media, __dirname + '/templates/media.js');
+	},
+	medialist: function () {
+		return load(w.medialist, __dirname + '/templates/medialist.js');
+	},
+	listgroup: function () {
+		return load(w.listgroup, __dirname + '/templates/listgroup.js');
+	},
+	linkgroup: function () {
+		return load(w.linkgroup, __dirname + '/templates/linkgroup.js');
+	},
+	panel: function () {
+		return load(w.panel, __dirname + '/templates/panel.js');
+	},
+	well: function () {
+		return load(w.well, __dirname + '/templates/well.js');
+	},
+	modal: function () {
+		return load(w.modal, __dirname + '/templates/modal.js');
+	},
+	carousel: function () {
+		return load(w.carousel, __dirname + '/templates/carousel.js');
+	},
 };
 
 var icon = function (name) {

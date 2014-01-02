@@ -50,6 +50,15 @@ Template.prototype.setInline = function (bool) {
 	}
 };
 
+Template.prototype.setNavbar = function (bool, direction) {
+	defaults(direction, 'left');
+	if (bool) {
+		this.body.addClass([ 'navbar-form', 'navbar-'+direction ]);
+	} else {
+		this.body.removeClass([ 'navbar-form', 'navbar-left', 'navbar-right' ]);
+	}
+};
+
 var form = new Template();
 form.body = e.form({attrs: {role: 'form'}});
 exports.Template = form;
