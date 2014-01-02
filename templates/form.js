@@ -27,7 +27,8 @@ Template.prototype.addFI = function (label, input) {
 		if (input.tag == 'input') {
 			input.addClass('form-control');
 		} else {
-			var list = input.find({'type':'input'});
+			var list = input.find('input');
+			list = list.concat(input.find('select'));
 			for (var i=0, el; el=list[i]; i++) {
 				el.addClass('form-control');
 			}
