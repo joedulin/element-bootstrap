@@ -10,8 +10,8 @@
     }
   ],
   "dependencies": {
-    "elementfw": "git://github.com/joedulin/elementfw",
-    "element.js": "git://github.com/joedulin/element.js",
+    "elementfw": "git://github.com/joedulin/elementfw.git",
+    "element.js": "git://github.com/joedulin/element.js.git",
     "clone": "*",
     "node-uuid": "*"
   },
