@@ -4,7 +4,7 @@ var e = require('element.js').e;
 Template.prototype.setSize = function (size, num) {
 	if (typeof size === 'object') {
 		for (s in size) {
-			col.setSize(s,size[s]);
+			this.setSize(s,size[s]);
 		}
 	} else {
 		switch (size) {
@@ -96,7 +96,7 @@ Template.prototype.setSize = function (size, num) {
 Template.prototype.setOffset = function (size, num) {
 	if (typeof size === 'object') {
 		for (s in size) {
-			this.body.setOffset(s,size[s]);
+			this.setOffset(s,size[s]);
 		}
 	} else {
 		switch (size) {
@@ -149,7 +149,7 @@ Template.prototype.setOffset = function (size, num) {
 Template.prototype.setPush = function (size, num) {
 	if (typeof size === 'object') {
 		for (s in size) {
-			this.body.setPush(s,size[s]);
+			this.setPush(s,size[s]);
 		}
 	} else {
 		switch (size) {
@@ -195,7 +195,7 @@ Template.prototype.setPush = function (size, num) {
 Template.prototype.setPull = function (size, num) {
 	if (typeof size === 'object') {
 		for (s in size) {
-			this.body.setPull(s,size[s]);
+			this.setPull(s,size[s]);
 		}
 	} else {
 		switch (size) {

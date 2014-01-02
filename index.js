@@ -150,10 +150,16 @@ var widgets = {
 	row: function () {
 		return load(w.row, __dirname + '/templates/row.js');
 	},
-	col: function (width, offset) {
+	col: function (size, offset) {
 		var c = clone(getTemplate(__dirname + '/templates/col.js'));
-		c.setSize(width);
-		c.setOffset(offset);
+		size = defaults(size, null);
+		offset = defaults(offset, null);
+		if (size !== null) {
+			c.setSize(size);
+		}
+		if (offset !== null) {
+			c.setOffset(offset);
+		}
 		return c;
 	},
 	lead: function () {
