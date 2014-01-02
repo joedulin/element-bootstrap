@@ -24,13 +24,22 @@ Template.prototype.addFI = function (label, input) {
 		}
 	}
 	if (typeof input == 'object') {
-		input.addClass('form-control');
-	}
-	if (input.type == 'checkbox' || input.type == 'radio') {
-		label.inner = [input, label.inner[0]];
-		this.body.append(e.div(label, { classes: ['form-group'] }));
+		if (input.tag = 'div') {
+			input.inner[0].addClass('form-control');
+		}
+		if (input.inner[0].type == 'checkbox' || input.inner[0].type == 'radio') {
+			label.inner = [input[0], label.inner[0]];
+			this.body.append(e.div(label, { classes: ['form-group'] }));
+		} else {
+			this.body.append(e.div([ label, input[0] ], { classes: ['form-group'] }));
+		}
 	} else {
-		this.body.append(e.div([ label, input ], { classes: ['form-group'] }));
+		if (input.type == 'checkbox' || input.type == 'radio') {
+			label.inner = [input, label.inner[0]];
+			this.body.append(e.div(label, { classes: ['form-group'] }));
+		} else {
+			this.body.append(e.div([ label, input ], { classes: ['form-group'] }));
+		}
 	}
 };
 
