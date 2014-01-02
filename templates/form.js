@@ -28,8 +28,8 @@ Template.prototype.addFI = function (label, input) {
 			input.addClass('form-control');
 		} else {
 			var list = input.find({'type':'input'});
-			for (var i=0, e; e=list[i]; i++) {
-				e.addClass('form-control');
+			for (var i=0, el; el=list[i]; i++) {
+				el.addClass('form-control');
 			}
 		}
 	}
