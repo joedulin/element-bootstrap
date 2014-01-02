@@ -4,7 +4,7 @@ var uuid = require('node-uuid');
 var id = uuid.v4();
 
 Template.prototype.addSlide = function (item) {
-	this.e.slides.append([ e.div(item, { classes: [ 'item' ] }) ]);
+	this.e.slides.append(e.div(item, { classes: [ 'item' ] }));
 	this.e.list.append(e.li([], { attrs: { 'data-target': '#'+id } }));
 	for (var i=0, slide; slide=this.e.list.inner[i]; i++) {
 		slide.attr('data-slide-to', i);
@@ -18,6 +18,18 @@ Template.prototype.setActive = function (index) {
 	}
 	this.e.list.inner[index].addClass('active');
 	this.e.slides.inner[index].addClass('active');
+};
+
+Template.prototype.setCaption = function (index, text) {
+	var caption = this.e.slides.inner[index].find('.carousel-caption');
+	if (caption.length == 0) {
+		var div = e.div([], { classes: [ 'carousel-caption' ] });
+		div.append(text);
+		this.e.slides.inner[index].append(div);
+	} else {
+		caption[0].inner = [];
+		caption[0].append(text);
+	}
 };
 
 var carousel = new Template();
