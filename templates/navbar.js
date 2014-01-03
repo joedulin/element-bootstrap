@@ -28,6 +28,7 @@ function navbarify (item) {
 			}
 			break;
 	}
+	return item;
 }
 
 Template.prototype.setBrand = function (brand) {
@@ -44,11 +45,11 @@ Template.prototype.append = function (item) {
 	if (ia(item)) {
 		for (var i=0; i<item.length; i++) {
 			if (typeof item == 'object') {
-				navbarify(item);
+				item = navbarify(item);
 			}
 		}
 	} else if (typeof item == 'object') {
-		navbarify(item);
+		item = navbarify(item);
 	}
 	this.e.collapse.append(item);
 };
