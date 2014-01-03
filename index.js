@@ -147,8 +147,11 @@ var w = {};
 
 //Define the widgets
 var widgets = {
-	row: function () {
-		return load(w.row, __dirname + '/templates/row.js');
+	row: function (inner) {
+		var r = load(w.row, __dirname + '/templates/row.js');
+		inner = defaults(inner, []);
+		r.append(inner);
+		return r;
 	},
 	col: function (inner, size, offset) {
 		var c = clone(getTemplate(__dirname + '/templates/col.js'));
@@ -164,8 +167,11 @@ var widgets = {
 		c.append(inner);
 		return c;
 	},
-	lead: function () {
-		return load(w.lead, __dirname + '/templates/lead.js');
+	lead: function (text) {
+		var l = load(w.lead, __dirname + '/templates/lead.js');
+		text = defaults(text, []);
+		l.append(text);
+		return l;
 	},
 	table: function () {
 		return load(w.table, __dirname + '/templates/table.js');
@@ -173,11 +179,19 @@ var widgets = {
 	form: function () {
 		return load(w.form, __dirname + '/templates/form.js');
 	},
-	button: function () {
-		return load(w.button, __dirname + '/templates/button.js');
+	button: function (text, type) {
+		var btn = load(w.button, __dirname + '/templates/button.js');
+		text = defaults(text, []);
+		type = defaults(type, 'default');
+		btn.append(text);
+		btn.setType(type);
+		return btn;
 	},
-	image: function () {
-		return load(w.button, __dirname + '/templates/image.js');
+	image: function (src) {
+		var img = load(w.button, __dirname + '/templates/image.js');
+		src = defaults(src, '');
+		alt = defaults(alt, '');
+		img.attr('src',src);
 	},
 	closeIcon: function () {
 		return load(w.closeIcon, __dirname + '/templates/closeIcon.js');
@@ -188,8 +202,11 @@ var widgets = {
 	clearfix: function () {
 		return load(w.clearfix, __dirname + '/templates/clearfix.js');
 	},
-	icon: function () {
-		return load(w.icon, __dirname + '/templates/icon.js');
+	icon: function (name) {
+		var i = load(w.icon, __dirname + '/templates/icon.js');
+		name = defaults(name, 'warning-sign');
+		i.setIcon(name);
+		return i;
 	},
 	dropdown: function () {
 		return load(w.dropdown, __dirname + '/templates/dropdown.js');
@@ -218,11 +235,19 @@ var widgets = {
 	pager: function () {
 		return load(w.pager, __dirname + '/templates/pager.js');
 	},
-	label: function () {
-		return load(w.label, __dirname + '/templates/label.js');
+	label: function (inner, type) {
+		var l = load(w.label, __dirname + '/templates/label.js');
+		inner = defaults(inner, []);
+		type = defaults(type, 'default');
+		l.setText(inner);
+		l.setType(type);
+		return l
 	},
-	badge: function () {
-		return load(w.badge, __dirname + '/templates/badge.js');
+	badge: function (inner) {
+		var b = load(w.badge, __dirname + '/templates/badge.js');
+		inner = defaults(inner, []);
+		b.append(inner);
+		return b;
 	},
 	pageheader: function () {
 		return load(w.pageheader, __dirname + '/templates/pageheader.js');
