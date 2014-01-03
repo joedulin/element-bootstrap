@@ -154,7 +154,7 @@ var widgets = {
 		return r;
 	},
 	col: function (inner, size, offset) {
-		var c = clone(getTemplate(__dirname + '/templates/col.js'));
+		var c = load(w.col, __dirname + '/templates/col.js');
 		size = defaults(size, null);
 		offset = defaults(offset, null);
 		inner = defaults(inner, []);
