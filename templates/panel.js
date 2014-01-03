@@ -11,6 +11,9 @@ Template.prototype.setTitle = function (text) {
 };
 
 Template.prototype.setFooter = function (text) {
+	if (typeof this.e.pfoot == 'undefined') {
+		this.e.pfoot = e.div([], { classes: [ 'panel-footer' ] });
+	}
 	this.e.pfoot.inner = [];
 	this.e.pfoot.append(text);
 };
@@ -23,7 +26,7 @@ Template.prototype.setType = function (type) {
 var panel = new Template();
 panel.e.phead = e.div([], { classes: [ 'panel-heading' ] });
 panel.e.pbody = e.div([], { classes: [ 'panel-body' ] });
-panel.e.pfoot = e.div([], { classes: [ 'panel-footer' ] });
+//panel.e.pfoot = e.div([], { classes: [ 'panel-footer' ] });
 panel.body = e.div([
 	panel.e.phead,
 	panel.e.pbody,
